@@ -4,8 +4,6 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
 import { ScheduleModule } from '@nestjs/schedule';
 import { APP_GUARD } from '@nestjs/core';
-import { ServeStaticModule } from '@nestjs/serve-static';
-import { join } from 'path';
 
 import configuration from './config/configuration';
 
@@ -44,10 +42,6 @@ import { SeedModule } from './modules/seed/seed.module';
     NewsModule,
     UploadsModule,
     SeedModule,
-    ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'uploads'),
-      serveRoot: '/uploads',
-    }),
   ],
   providers: [
     { provide: APP_GUARD, useClass: ThrottlerGuard },
